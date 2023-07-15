@@ -53,3 +53,5 @@ dkms.conf
 
 #MAC
 .DS_Store
+.vscode
+/gnlTester

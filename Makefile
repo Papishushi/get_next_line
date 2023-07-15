@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dmoliner <dmoliner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/13 20:39:17 by dmoliner          #+#    #+#              #
-#    Updated: 2023/01/13 20:48:05 by dmoliner         ###   ########.fr        #
+#    Created: 2023/07/11 08:45:32 by dmoliner          #+#    #+#              #
+#    Updated: 2023/07/11 08:45:32 by dmoliner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=42
-NAME = .o
+CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=2
+NAME = gnl
 RM = rm -rf
 ################################################################################
 ##								MANDATORY									  ##
@@ -36,7 +36,7 @@ OBJS = $(CFILES:.c=.o)
 all:        $(NAME)
 
 $(NAME): $(OBJS)
-
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 %.o:%.c
 			$(CC) $(CFLAGS) -c $^ -o $@
 
@@ -45,7 +45,7 @@ re:     	fclean all
 fclean: clean
 			@$(RM) $(NAME)
 
-clean:	bclean
+clean:
 			@$(RM) $(OBJS)
 
 # $<: rule target file (input)
