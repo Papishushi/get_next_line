@@ -6,7 +6,7 @@
 /*   By: dmoliner <dmoliner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:31:53 by dmoliner          #+#    #+#             */
-/*   Updated: 2023/07/14 20:34:39 by dmoliner         ###   ########.fr       */
+/*   Updated: 2023/07/15 18:44:44 by dmoliner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,5 @@ char	*ft_chop_memory(char *memory)
 	//Finalize the string and return the buffer with the start chopped
 	str[j] = '\0';
 	free(memory);
-	return (str);
+	return(str);
 }

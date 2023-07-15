@@ -6,7 +6,7 @@
 /*   By: dmoliner <dmoliner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:23:07 by dmoliner          #+#    #+#             */
-/*   Updated: 2023/07/14 20:35:03 by dmoliner         ###   ########.fr       */
+/*   Updated: 2023/07/15 18:44:24 by dmoliner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ char	*ft_read_till_nl(const int fd, char *memory)
 		//Read to buffer up to BUFFER_SIZE
 		rd_bytes = read(fd, chunk, BUFFER_SIZE);
 		//If EOF return NULL
-		if (rd_bytes == -1){
+		if (rd_bytes == -1)
+		{
+			free(memory);
 			free(chunk);
 			return (NULL);
 		}
@@ -57,6 +59,7 @@ char	*get_next_line(int fd)
 	//Get a line from memory or NULL if there is an error
 	line = ft_get_line(memory);
 	//Chop the line from the static memory
-	memory = ft_chop_memory(memory);
+	if (memory)
+		memory = ft_chop_memory(memory);
 	return (line);
 }
