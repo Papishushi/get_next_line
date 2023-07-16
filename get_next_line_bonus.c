@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoliner <dmoliner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 20:23:07 by dmoliner          #+#    #+#             */
-/*   Updated: 2023/07/15 18:44:24 by dmoliner         ###   ########.fr       */
+/*   Created: 2023/07/16 17:15:50 by dmoliner          #+#    #+#             */
+/*   Updated: 2023/07/16 17:15:50 by dmoliner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <unistd.h>
 
 char	*ft_read_till_nl(const int fd, char *memory)
@@ -41,14 +41,14 @@ char	*ft_read_till_nl(const int fd, char *memory)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*memory;
+	static char	*memory[FD_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	memory = ft_read_till_nl(fd, memory);
-	if (!memory)
+	memory[fd] = ft_read_till_nl(fd, memory[fd]);
+	if (!memory[fd])
 		return (NULL);
-	line = ft_get_line(memory);
-	memory = ft_chop_memory(memory);
+	line = ft_get_line(memory[fd]);
+	memory[fd] = ft_chop_memory(memory[fd]);
 	return (line);
 }
